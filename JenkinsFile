@@ -6,7 +6,7 @@
    }
    stage('Compile-Package'){
     // get Maven Home Path
-    def mvn = tool (name: 'maven-3', type: 'maven') + '/bin/mvn' 
+    def mvn = 'D:/logs/apache-maven-3.6.3/bin/mvn' 
     sh "${mvn} package"
    
    }
