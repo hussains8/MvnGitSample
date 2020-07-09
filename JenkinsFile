@@ -1,13 +1,20 @@
  node{
-   stage('SCM Checkout'){
-    // Clone repo
-	git 'https://github.com/hussains8/MvnGitSample'
-   
+   stage('Checkout'){
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'e6dcd932-3abc-4314-912f-9a76ee8d5ed1', url: 'https://github.com/hussains8/MvnGitSample']]])
    }
-   stage('Compile-Package'){
-    // get Maven Home Path
-    def mvn = 'D:/logs/apache-maven-3.6.3/bin/mvn' 
-    sh "${mvn} package"
-   
-   }
-   }
+   stage('Build') {
+        steps {
+            echo 'Building..'
+            }
+        }
+   stage('Test') {
+        steps {
+            echo 'Testing..'
+        }
+    }
+    stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
