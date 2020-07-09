@@ -1,0 +1,13 @@
+ node{
+ def mvn = tool (name: 'maven-3', type: 'maven') + '/bin/mvn' 
+   stage('SCM Checkout'){
+    // Clone repo
+	git 'https://github.com/hussains8/MvnGitSample'
+   
+   }
+   stage('Compile-Package'){
+    // get Maven Home Path
+    sh "${mvn} package"
+   
+   }
+   }
